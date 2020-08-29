@@ -5,9 +5,6 @@ import random
 from pandas import read_csv as rc
 
 data = rc("data.csv")["Math_score"].tolist()
-dataMean = sts.mean(data)
-dataStd = sts.stdev(data)
-
 def rsm(x):
     return sts.mean([data[random.randint(0, len(data)-1)] for i in range(x)])
 
@@ -32,4 +29,4 @@ fig.add_trace(go.Scatter(x=[stdev3E, stdev3E], y=[0, 0.17], mode="lines", name="
 
 fig.show()
 
-print("Z Score:",(sts.mean(rc("data2.csv")["Math_score"].tolist()) - dataMean)/dataStd)
+print("Z Score:",(sts.mean(rc("data2.csv")["Math_score"].tolist()) - sts.mean(data))/sts.stdev(data))
