@@ -12,9 +12,9 @@ mL = [rsm(100) for i in range(1000)]
 mLStd = sts.stdev(mL)
 mML = sts.mean(mL)
 
-stdev1S, stdev1E = mML - mLStd, mML + mLStd
-stdev2S, stdev2E = mML - (mLStd*2), mML + (mLStd*2)
-stdev3S, stdev3E = mML - (mLStd*3), mML + (mLStd*3)
+stdev1S, stdev1E = mML-mLStd, mML+mLStd
+stdev2S, stdev2E = mML-(mLStd*2), mML+(mLStd*2)
+stdev3S, stdev3E = mML-(mLStd*3), mML+(mLStd*3)
 
 fig = ff.create_distplot([mL], ["Student Marks"], show_hist=False)
 
@@ -29,4 +29,4 @@ fig.add_trace(go.Scatter(x=[stdev3E, stdev3E], y=[0, 0.17], mode="lines", name="
 
 fig.show()
 
-print("Z Score:",(sts.mean(rc("data2.csv")["Math_score"].tolist()) - sts.mean(data))/sts.stdev(data))
+print("Z Score:",(sts.mean(rc("data2.csv")["Math_score"].tolist())-sts.mean(data))/sts.stdev(data))
